@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>Projet</display-name>
+	 <session-config> 
+        <session-timeout>20</session-timeout>
+    </session-config>
+	<servlet>
+		<display-name>Inscription</display-name>
+		<servlet-name>Inscription</servlet-name>
+		<servlet-class>servlets.Inscription</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Inscription</servlet-name>
+		<url-pattern>/inscription</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+    	<servlet-name>Connexion</servlet-name>
+    	<servlet-class>servlets.Connexion</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	    <servlet-name>Connexion</servlet-name>
+	    <url-pattern>/connexion</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>Deconnexion</servlet-name>
+		<servlet-class>servlets.Deconnexion</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	    <servlet-name>Deconnexion</servlet-name>
+	    <url-pattern>/deconnexion</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+	    <servlet-name>Restriction</servlet-name>
+	    <servlet-class>servlets.Restriction</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+	    <servlet-name>Restriction</servlet-name>
+	    <url-pattern>/restriction</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>GestionTestJDBC</servlet-name>
+	<servlet-class>servlets.GestionTestJDBC</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GestionTestJDBC</servlet-name>
+		<url-pattern>/testjdbc</url-pattern>
+	</servlet-mapping>
+
+ <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+
+</web-app>
