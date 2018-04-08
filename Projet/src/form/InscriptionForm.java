@@ -101,7 +101,7 @@ public final class InscriptionForm {
     
     private void validationNaiss( String naissance ) throws Exception {
         if ( naissance != null && naissance.trim().length() < 9 ) {
-            throw new Exception( "Le format demandé est JJ/MM/AAA." );
+            throw new Exception( "Le format demandé est JJ/MM/AAAA." );
         }
     }
 
