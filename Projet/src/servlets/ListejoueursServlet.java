@@ -8,6 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5da4e55e76a67e4c841326469f9f91df5666de2b
 public class ListejoueursServlet extends HttpServlet {
 	
     public static final String ACCES_LISTEJOUEURS     = "/ListeJoueurs.jsp";
@@ -31,4 +35,8 @@ public class ListejoueursServlet extends HttpServlet {
         }
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5da4e55e76a67e4c841326469f9f91df5666de2b

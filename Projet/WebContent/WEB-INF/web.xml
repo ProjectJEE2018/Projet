@@ -82,9 +82,43 @@
 	</servlet-mapping>
 	
 	
+<<<<<<< HEAD
 	<listener>
     	<listener-class>config.InitialisationDaoFactory</listener-class>
 	</listener>
+=======
+	<servlet>
+    	<servlet-name>ListeJeux</servlet-name>
+    	<servlet-class>servlets.ListejeuxServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	    <servlet-name>ListeJeux</servlet-name>
+	    <url-pattern>/ListeJeux</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+    	<servlet-name>ListeJoueurs</servlet-name>
+    	<servlet-class>servlets.ListejoueursServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	    <servlet-name>ListeJoueurs</servlet-name>
+	    <url-pattern>/ListeJoueurs</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+    	<servlet-name>Parties</servlet-name>
+    	<servlet-class>servlets.PartieServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	    <servlet-name>Parties</servlet-name>
+	    <url-pattern>/Parties</url-pattern>
+	</servlet-mapping>
+	
+>>>>>>> 5da4e55e76a67e4c841326469f9f91df5666de2b
 
  <welcome-file-list>
     <welcome-file>index.html</welcome-file>

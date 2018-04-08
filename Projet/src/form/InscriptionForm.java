@@ -145,10 +145,22 @@ public final class InscriptionForm {
         }
     }
 
+<<<<<<< HEAD
+    private void validationNom( String nom ) throws Exception {
+        if ( nom != null && nom.trim().length() < 3 ) {
+            throw new Exception( "Le nom d'utilisateur doit contenir au moins 3 caractères." );
+        }
+    }
+    
+    private void validationNaiss( String naissance ) throws Exception {
+        if ( naissance != null && naissance.trim().length() < 9 ) {
+            throw new Exception( "Le format demandé est JJ/MM/AAAA." );
+=======
     /* Validation du nom */
     private void validationNom( String nom ) throws FormValidationException {
         if ( nom != null && nom.length() < 3 ) {
             throw new FormValidationException( "Le nom d'utilisateur doit contenir au moins 3 caractères." );
+>>>>>>> 77f61c7281f2fabbe9b8b679a50011541f69d0e7
         }
     }
 

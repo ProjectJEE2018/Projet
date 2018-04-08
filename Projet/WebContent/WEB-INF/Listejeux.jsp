@@ -4,11 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<<<<<<< HEAD
-<title>Insert title here</title>
-=======
-<title>Parties</title>
->>>>>>> 5da4e55e76a67e4c841326469f9f91df5666de2b
+<title>Liste des jeux</title>
 </head>
 <body>
 
