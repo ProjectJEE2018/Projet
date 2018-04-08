@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import beans.Utilisateur;
+import dao.DAOException;
+import dao.UtilisateurDao;
 
 public final class ConnexionForm {
     private static final String CHAMP_EMAIL  = "email";
@@ -13,7 +15,12 @@ public final class ConnexionForm {
 
     private String resultat;
     private Map<String, String> erreurs = new HashMap<String, String>();
-
+    private UtilisateurDao      utilisateurDao;
+    
+    public ConnexionForm( UtilisateurDao utilisateurDao ) {
+        this.utilisateurDao = utilisateurDao;
+    }
+    
     public String getResultat() {
         return resultat;
     }
@@ -28,31 +35,35 @@ public final class ConnexionForm {
         String motDePasse = getValeurChamp( request, CHAMP_PASS );
 
         Utilisateur utilisateur = new Utilisateur();
-
+        
         /* Validation du champ email. */
         try {
             validationEmail( email );
         } catch ( Exception e ) {
             setErreur( CHAMP_EMAIL, e.getMessage() );
         }
-        utilisateur.setEmail( email );
+
 
         /* Validation du champ mot de passe. */
         try {
-            validationMotDePasse( motDePasse );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_PASS, e.getMessage() );
-        }
-        utilisateur.setMotDePasse( motDePasse );
-
-        /* Initialisation du résultat global de la validation. */
-        if ( erreurs.isEmpty() ) {
-            resultat = "Succès de la connexion.";
-        } else {
-            resultat = "Échec de la connexion.";
-        }
-
-        return utilisateur;
+            try {
+				validationMotDePasse( motDePasse );
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        /* Initialisation du résultat global de la validation. */
+	        if ( erreurs.isEmpty() ) {
+	        	utilisateurDao.signin(email, motDePasse);
+	            resultat = "Succès de la connexion.";
+	        } else {
+	            resultat = "Échec de la connexion.";
+	        }
+        } catch ( DAOException e ) {
+	            resultat = "Échec de l'inscription : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
+	            e.printStackTrace();
+	        }
+	        return utilisateur;
     }
 
     /**

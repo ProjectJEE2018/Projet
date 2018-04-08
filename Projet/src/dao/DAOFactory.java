@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class DAOFactory {
 
-    private static final String FICHIER_PROPERTIES       = "WEB-INF/config.properties";
+    private static final String FICHIER_PROPERTIES       = "/config.properties";
     private static final String PROPERTY_URL             = "url";
     private static final String PROPERTY_DRIVER          = "driver";
     private static final String PROPERTY_NOM_UTILISATEUR = "nomutilisateur";
@@ -40,11 +40,10 @@ public class DAOFactory {
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         InputStream fichierProperties = classLoader.getResourceAsStream( FICHIER_PROPERTIES );
 
-        // Si le fichier n'est pas trouvé :
         if ( fichierProperties == null ) {
             throw new DAOConfigurationException( "Le fichier properties " + FICHIER_PROPERTIES + " est introuvable." );
         }
-        // lecture du fichier properties :
+
         try {
             properties.load( fichierProperties );
             url = properties.getProperty( PROPERTY_URL );

@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-
+import org.jasypt.util.password.ConfigurablePasswordEncryptor;
 
 import beans.Utilisateur;
 import dao.DAOException;
@@ -16,6 +16,7 @@ public final class InscriptionForm {
     private static final String CHAMP_PASS       = "motdepasse";
     private static final String CHAMP_CONF       = "confirmation";
     private static final String CHAMP_NOM        = "nom";
+    private static final String CHAMP_NAISS        = "naissance";
 
     private static final String ALGO_CHIFFREMENT = "SHA-256";
 
@@ -40,12 +41,14 @@ public final class InscriptionForm {
         String motDePasse = getValeurChamp( request, CHAMP_PASS );
         String confirmation = getValeurChamp( request, CHAMP_CONF );
         String nom = getValeurChamp( request, CHAMP_NOM );
+        String naissance = getValeurChamp( request, CHAMP_NAISS );
 
         Utilisateur utilisateur = new Utilisateur();
         try {
             traiterEmail( email, utilisateur );
             traiterMotsDePasse( motDePasse, confirmation, utilisateur );
             traiterNom( nom, utilisateur );
+            utilisateur.setNaissance( naissance);
 
             if ( erreurs.isEmpty() ) {
                 utilisateurDao.creer( utilisateur );
