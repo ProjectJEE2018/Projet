@@ -15,8 +15,7 @@ public class Deconnexion extends HttpServlet {
         /* Récupération et destruction de la session en cours */
         HttpSession session = request.getSession();
         session.invalidate();
-
-        /* Redirection vers le Site du Zéro ! */
-        response.sendRedirect( "/Projet/connexion" );
+        
+        response.sendRedirect( "/Projet/connexion.jsp" );
     }
 }

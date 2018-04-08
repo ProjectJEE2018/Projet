@@ -15,7 +15,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
     private static final String SQL_SELECT_PAR_EMAIL = "SELECT id, email, nom, mot_de_passe, date_inscription, naissance FROM Utilisateur WHERE email = ?";
     private static final String SQL_INSERT           = "INSERT INTO Utilisateur (email, mot_de_passe, nom, date_inscription, naissance) VALUES (?, ?, ?, NOW(), ?)";
     private static final String SQL_DELETE 			 = " DELETE FROM Utilisateur WHERE nom = ? ";
-    private static final String SQL_SIGNIN			 ="SELECT COUNT(*) FROM Utilisateur WHERE email = ? and mot_de_passe= ?";
+    private static final String SQL_SIGNIN			 ="SELECT id, email, nom, mot_de_passe, date_inscription, naissance FROM Utilisateur WHERE email = ? and mot_de_passe= ?";
     
     private DAOFactory          daoFactory;
 
@@ -30,30 +30,8 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
     }
     
     public Utilisateur signin( String email, String mdp) throws DAOException {
-        return signin( SQL_SIGNIN, email, mdp );
+        return trouver( SQL_SIGNIN, email, mdp );
     }
-    
-    public void supprimer( String nom ) throws DAOException {
-        Connection connexion = null;
-        PreparedStatement preparedStatement = null;
-
-        try {
-            connexion = daoFactory.getConnection();
-            preparedStatement = initialisationRequetePreparee( connexion, SQL_DELETE, true, nom );
-            int statut = preparedStatement.executeUpdate();
-            if ( statut == 0 ) {
-                throw new DAOException( "Échec de la suppression du compte, aucune ligne supprimée de la table." );
-            } else {
-            }
-        } catch ( SQLException e ) {
-            throw new DAOException( e );
-        } finally {
-            fermeturesSilencieuses( preparedStatement, connexion );
-        }
-    }
-    
-
-    /* Implémentation de la méthode définie dans l'interface UtilisateurDao */
     @Override
     public void creer( Utilisateur utilisateur ) throws DAOException {
         Connection connexion = null;
@@ -79,6 +57,28 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
             fermeturesSilencieuses( valeursAutoGenerees, preparedStatement, connexion );
         }
     }
+    
+   /* public void supprimer( String nom ) throws DAOException {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connexion = daoFactory.getConnection();
+            preparedStatement = initialisationRequetePreparee( connexion, SQL_DELETE, true, nom );
+            int statut = preparedStatement.executeUpdate();
+            if ( statut == 0 ) {
+                throw new DAOException( "Échec de la suppression du compte, aucune ligne supprimée de la table." );
+            } else {
+            }
+        } catch ( SQLException e ) {
+            throw new DAOException( e );
+        } finally {
+            fermeturesSilencieuses( preparedStatement, connexion );
+        }
+    }*/
+    
+
+    /* Implémentation de la méthode définie dans l'interface UtilisateurDao */
 
     /*
      * Méthode générique utilisée pour retourner un utilisateur depuis la base
@@ -113,33 +113,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
         return utilisateur;
     }
     
-    private Utilisateur signin( String sql, Object... objets ) throws DAOException {
-        Connection connexion = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        Utilisateur utilisateur = null;
 
-        try {
-            /* Récupération d'une connexion depuis la Factory */
-            connexion = daoFactory.getConnection();
-            /*
-             * Préparation de la requête avec les objets passés en arguments
-             * (ici, uniquement une adresse email) et exécution.
-             */
-            preparedStatement = initialisationRequetePreparee( connexion, sql, false, objets );
-            resultSet = preparedStatement.executeQuery();
-            /* Parcours de la ligne de données retournée dans le ResultSet */
-            if ( resultSet.next() ) {
-                utilisateur = map( resultSet );
-            }
-        } catch ( SQLException e ) {
-            throw new DAOException( e );
-        } finally {
-            fermeturesSilencieuses( resultSet, preparedStatement, connexion );
-        }
-
-        return utilisateur;
-    }
 
     /*
      * Simple méthode utilitaire permettant de faire la correspondance (le

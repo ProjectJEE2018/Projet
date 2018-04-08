@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.jasypt.util.password.ConfigurablePasswordEncryptor;
+
 import beans.Utilisateur;
 import dao.DAOException;
 import dao.UtilisateurDao;
@@ -12,6 +14,7 @@ import dao.UtilisateurDao;
 public final class ConnexionForm {
     private static final String CHAMP_EMAIL  = "email";
     private static final String CHAMP_PASS   = "motdepasse";
+    private static final String ALGO_CHIFFREMENT = "SHA-256";
 
     private String resultat;
     private Map<String, String> erreurs = new HashMap<String, String>();
@@ -28,66 +31,62 @@ public final class ConnexionForm {
     public Map<String, String> getErreurs() {
         return erreurs;
     }
+    
+    private void validationEmail( String email ) throws FormValidationException {
+        if ( email != null && !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
+            throw new FormValidationException( "Merci de saisir une adresse mail valide." );
+        }
+    }
 
+    private void validationMotDePasse( String motDePasse )  throws FormValidationException{
+        if ( motDePasse != null ) {
+            if ( motDePasse.length() < 3 ) {
+                throw new FormValidationException( "Le mot de passe doit contenir au moins 3 caractères." );
+            }
+        } else {
+            throw new FormValidationException( "Merci de saisir votre mot de passe." );
+        }
+    }
+    
+    private void traiterEmail( String email, Utilisateur utilisateur ) {
+        try {
+            validationEmail( email );
+        } catch ( FormValidationException e ) {
+            setErreur( CHAMP_EMAIL, e.getMessage() );
+        }
+        utilisateur.setEmail( email );
+    }
+    
+    private void traiterMotsDePasse( String mdp, Utilisateur utilisateur ) {
+        try {
+            validationMotDePasse( mdp );
+        } catch ( FormValidationException e ) {
+            setErreur(CHAMP_PASS, e.getMessage());
+        }
+    }
     public Utilisateur connecterUtilisateur( HttpServletRequest request ) {
         /* Récupération des champs du formulaire */
         String email = getValeurChamp( request, CHAMP_EMAIL );
-        String motDePasse = getValeurChamp( request, CHAMP_PASS );
+        String mdp1 = getValeurChamp( request, CHAMP_PASS );
 
         Utilisateur utilisateur = new Utilisateur();
         
-        /* Validation du champ email. */
-        try {
-            validationEmail( email );
-        } catch ( Exception e ) {
-            setErreur( CHAMP_EMAIL, e.getMessage() );
-        }
-
-
-        /* Validation du champ mot de passe. */
-        try {
-            try {
-				validationMotDePasse( motDePasse );
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        /* Initialisation du résultat global de la validation. */
-	        if ( erreurs.isEmpty() ) {
-	        	utilisateurDao.signin(email, motDePasse);
-	            resultat = "Succès de la connexion.";
-	        } else {
-	            resultat = "Échec de la connexion.";
-	        }
-        } catch ( DAOException e ) {
-	            resultat = "Échec de l'inscription : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
-	            e.printStackTrace();
-	        }
-	        return utilisateur;
-    }
-
-    /**
-     * Valide l'adresse email saisie.
-     */
-    private void validationEmail( String email ) throws Exception {
-        if ( email != null && !email.matches( "([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)" ) ) {
-            throw new Exception( "Merci de saisir une adresse mail valide." );
-        }
-    }
-
-    /**
-     * Valide le mot de passe saisi.
-     */
-    private void validationMotDePasse( String motDePasse ) throws Exception {
-        if ( motDePasse != null ) {
-            if ( motDePasse.length() < 3 ) {
-                throw new Exception( "Le mot de passe doit contenir au moins 3 caractères." );
+         try {
+            traiterEmail( email, utilisateur );
+            traiterMotsDePasse( mdp1, utilisateur );
+           
+            if ( erreurs.isEmpty() ) {
+                utilisateur = utilisateurDao.signin( email, mdp1 );
+                //resultat = "Succès de la connexion.";
+            } else {
+                resultat = "Échec de la connexion.";
             }
-        } else {
-            throw new Exception( "Merci de saisir votre mot de passe." );
+        } catch ( DAOException e ) {
+            resultat = "Échec de la connexion : une erreur imprévue est survenue, merci de réessayer dans quelques instants.";
+            e.printStackTrace();
         }
+	    return utilisateur;
     }
-
     /*
      * Ajoute un message correspondant au champ spécifié à la map des erreurs.
      */

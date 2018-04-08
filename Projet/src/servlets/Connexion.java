@@ -12,7 +12,7 @@ import beans.Utilisateur;
 import dao.DAOFactory;
 import dao.UtilisateurDao;
 import form.ConnexionForm;
-import form.InscriptionForm;
+
 
 public class Connexion extends HttpServlet {
 	public static final String CONF_DAO_FACTORY = "daofactory";
@@ -20,7 +20,7 @@ public class Connexion extends HttpServlet {
     public static final String ATT_FORM         = "form";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
     public static final String VUE              = "/connexion.jsp";
-    public static final String VUE1             = "/acceuil.jsp";
+    public static final String VUE1             = "/restriction";
     private UtilisateurDao     utilisateurDao;
 
     public void init() throws ServletException {
@@ -35,7 +35,8 @@ public class Connexion extends HttpServlet {
     }
     
     public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-        /* Préparation de l'objet formulaire */
+
+    	/* Préparation de l'objet formulaire */
         ConnexionForm form = new ConnexionForm(utilisateurDao);
 
         /* Traitement de la requête et récupération du bean en résultant */
@@ -50,6 +51,7 @@ public class Connexion extends HttpServlet {
          */
         if ( form.getErreurs().isEmpty() ) {
             session.setAttribute( ATT_SESSION_USER, utilisateur );
+            //this.getServletContext().getRequestDispatcher( VUE1 ).forward( request, response );
         } else {
             session.setAttribute( ATT_SESSION_USER, null );
         }
@@ -57,7 +59,8 @@ public class Connexion extends HttpServlet {
         /* Stockage du formulaire et du bean dans l'objet request */
         request.setAttribute( ATT_FORM, form );
         request.setAttribute( ATT_USER, utilisateur );
-
+        
+        
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }
 }

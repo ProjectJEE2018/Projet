@@ -34,6 +34,7 @@
                     <%-- Si l'utilisateur existe en session, alors on affiche son adresse email. --%>
                     <p class="succes">Vous êtes connecté(e) avec l'adresse : ${sessionScope.sessionUtilisateur.email}</p>
                 </c:if>
+                <a href="restriction"> Accès aux jeux !</a>
             </fieldset>
         </form>
     </body>

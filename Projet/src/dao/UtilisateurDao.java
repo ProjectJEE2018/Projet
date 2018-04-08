@@ -8,5 +8,6 @@ public interface UtilisateurDao {
     /* recherche d'un utilisateur à la connexion */
     Utilisateur trouver( String email ) throws DAOException;
 
-    Utilisateur signin (String email, String mdp) throws DAOException;
+    Utilisateur signin(String email, String mdp) throws DAOException;
+
 }
