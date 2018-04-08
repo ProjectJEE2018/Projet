@@ -1,11 +1,22 @@
 package beans;
 
+import java.sql.Timestamp;
+
 public class Utilisateur {
 
+	private Long id;
     private String email;
     private String motDePasse;
     private String nom;
     private String naissance;
+    private Timestamp dateInscription;
+    
+    public Long getId() {
+        return id;
+    }
+    public void setId( Long id ) {
+        this.id = id;
+    }
 
     public void setEmail(String email) {
 	this.email = email;
@@ -33,6 +44,13 @@ public class Utilisateur {
     }
     public String getNaissance() {
 	return naissance;
+    }
+    
+    public Timestamp getDateInscription() {
+        return dateInscription;
+    }
+    public void setDateInscription( Timestamp dateInscription ) {
+        this.dateInscription = dateInscription;
     }
     
 }
