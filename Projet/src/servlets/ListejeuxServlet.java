@@ -29,4 +29,16 @@ public class ListejeuxServlet extends HttpServlet {
             this.getServletContext().getRequestDispatcher( ACCES_RESTREINT ).forward( request, response );
         }
     }
+    
+    
+    
+    
+    
+    
+    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+
+    	
+    	
+    	
+    }
 }

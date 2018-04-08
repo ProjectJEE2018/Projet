@@ -6,7 +6,8 @@ import beans.Jeu;
 
 public interface JeuDAO {
 	
-	List<Jeu> Suppr();
+	void Suppr(String sql) throws DAOException;
+	void suppr(String nom);
 
 
 }
