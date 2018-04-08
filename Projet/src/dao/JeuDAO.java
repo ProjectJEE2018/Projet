@@ -11,7 +11,10 @@ public interface JeuDAO {
 		
 	}
 	void suppr(String nom);
-	void creer( Jeu jeu ) throws DAOException;
+	static void creer( Jeu jeu ) throws DAOException {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }

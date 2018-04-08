@@ -58,8 +58,9 @@ public class ListejeuxServlet extends HttpServlet {
 		
 		if (nameAdd != null && !nameAdd.equals("")) {
 			// add
-			Jeu j = new Jeu(nameAdd);
-			JeuDAO.(nameSuppr);
+			Jeu j = new Jeu();
+			j.setNom(nameAdd);
+			JeuDAO.creer(j);
 		}
 
 
