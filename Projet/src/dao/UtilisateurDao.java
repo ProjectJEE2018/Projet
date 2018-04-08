@@ -9,5 +9,5 @@ public interface UtilisateurDao {
     Utilisateur trouver( String email ) throws DAOException;
 
     Utilisateur signin(String email, String mdp) throws DAOException;
-
+	void modifier(Utilisateur utilisateur) throws DAOException;
 }
