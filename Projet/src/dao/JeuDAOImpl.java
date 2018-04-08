@@ -15,6 +15,11 @@ import static dao.DAOUtilitaire.initialisationRequetePreparee;
 
 public class JeuDAOImpl implements JeuDAO{
 
+    private DAOFactory          daoFactory;
+
+    JeuDAOImpl( DAOFactory daoFactory ) {
+        this.daoFactory = daoFactory;
+    }
 
 	public void suppr(String nom) {
 		// avoid select * queries because of performance issues,
@@ -40,6 +45,41 @@ public class JeuDAOImpl implements JeuDAO{
         }
 
     }
+	
+
+	
+	
+	
+	
+    public void creer( Jeu jeu ) throws DAOException {
+        Connection connexion = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet valeursAutoGenerees = null;
+        String sql = "INSERT INTO Jeu VALUES (?)";
+
+        try {
+            connexion = daoFactory.getConnection();
+            preparedStatement = initialisationRequetePreparee( connexion, sql, false, jeu.getNom());
+            int statut = preparedStatement.executeUpdate();
+            if ( statut == 0 ) {
+                throw new DAOException( "Échec de la création du jeu, aucune ligne ajoutée dans la table." );
+            }
+            valeursAutoGenerees = preparedStatement.getGeneratedKeys();
+            if ( valeursAutoGenerees.next() ) {
+                jeu.setId( valeursAutoGenerees.getLong( 1 ) );
+            } else {
+                throw new DAOException( "Échec de la création du jeu  en base, aucun ID auto-généré retourné." );
+            }
+        } catch ( SQLException e ) {
+            throw new DAOException( e );
+        } finally {
+            fermeturesSilencieuses( valeursAutoGenerees, preparedStatement, connexion );
+        }
+    }
+    
+    
+    
+    
 
 
 }

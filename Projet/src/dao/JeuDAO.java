@@ -6,8 +6,12 @@ import beans.Jeu;
 
 public interface JeuDAO {
 	
-	void Suppr(String sql) throws DAOException;
+	static void Suppr(String sql) throws DAOException {
+		// TODO Auto-generated method stub
+		
+	}
 	void suppr(String nom);
+	void creer( Jeu jeu ) throws DAOException;
 
 
 }

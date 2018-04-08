@@ -14,7 +14,7 @@
                 <p>Veuillez remplir les caractéristiques du jeu que vous souhaitez ajouter</p>
 
                 <label for="nom">Nom<span class="requis">*</span></label>
-                <input type="text" id="nom" name="nomJeu" value="<c:out value="${jeu.nom}"/>" size="20" maxlength="60" />
+                <input type="text" id="nom" name="nomJeuadd" value="<c:out value="${jeu.nom}"/>" size="20" maxlength="60" />
                 <span class="erreur">${form.erreurs['nomJeu']}</span>
                 <br />
                
@@ -29,7 +29,7 @@
                 <p>Veuillez saisir le nom du neu à supprimer</p>
 
                 <label for="nom">Nom<span class="requis">*</span></label>
-                <input type="text" id="nom" name="nomJeu" value="<c:out value="${jeu.nom}"/>" size="20" maxlength="60" />
+                <input type="text" id="nom" name="nomJeusuppr" value="<c:out value="${jeu.nom}"/>" size="20" maxlength="60" />
                 <span class="erreur">${form.erreurs['nomJeu']}</span>
                 <br />
                
