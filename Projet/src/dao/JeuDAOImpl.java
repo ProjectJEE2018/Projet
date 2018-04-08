@@ -46,6 +46,13 @@ public class JeuDAOImpl implements JeuDAO{
 
     }
 	
+<<<<<<< HEAD
+=======
+
+	
+	
+	
+>>>>>>> f03fe7f445482b074eb6ee1b6a1d8fb034f3daee
 	
     public void creer( Jeu jeu ) throws DAOException {
         Connection connexion = null;
