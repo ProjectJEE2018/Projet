@@ -30,15 +30,10 @@ public class ListejeuxServlet extends HttpServlet {
         }
     }
     
-    
-    
-    
-    
-    
-    public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-
-    	
-    	
-    	
-    }
+  
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doProcess(req, resp);
+	}
+	
 }
