@@ -36,6 +36,11 @@ public class ListejeuxServlet extends HttpServlet {
          * Si l'objet utilisateur n'existe pas dans la session en cours, alors
          * l'utilisateur n'est pas connecté.
          */
+<<<<<<< HEAD
+        if ( session.getAttribute( ATT_SESSION_USER ) == "admin@admin.com") {
+            /* Redirection vers la page publique */
+            response.sendRedirect( request.getContextPath() + ACCES_LISTE );
+=======
         
         /*Utilisateur test = new Utilisateur();
         test.setEmail("admin@admin.com");
@@ -47,6 +52,7 @@ public class ListejeuxServlet extends HttpServlet {
             /* Redirection vers la page admin */
         	 this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
       
+>>>>>>> fce464534edc464ccd98460dbcc8e61d68e156d0
         } else {
             /* Affichage de la page restreinte ou public */
         	

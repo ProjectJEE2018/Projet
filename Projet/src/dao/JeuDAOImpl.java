@@ -61,8 +61,15 @@ public class JeuDAOImpl implements JeuDAO{
             fermeturesSilencieuses( valeursAutoGenerees, preparedStatement, connexion );
         }
     }
+<<<<<<< HEAD
+	
+
+	
+    public void creer( Jeu jeu ) throws DAOException {
+=======
 
 	public void creer( Jeu jeu ) throws DAOException {
+>>>>>>> fce464534edc464ccd98460dbcc8e61d68e156d0
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
         ResultSet valeursAutoGenerees = null;
@@ -86,6 +93,8 @@ public class JeuDAOImpl implements JeuDAO{
             fermeturesSilencieuses( valeursAutoGenerees, preparedStatement, connexion );
         }
     }
+<<<<<<< HEAD
+=======
 	
 	  /*
      * Simple méthode utilitaire permettant de faire la correspondance (le
@@ -99,6 +108,7 @@ public class JeuDAOImpl implements JeuDAO{
         
         return jeu;
     }
+>>>>>>> fce464534edc464ccd98460dbcc8e61d68e156d0
 
 	@Override
 	public void Suppr(String sql) throws DAOException {
