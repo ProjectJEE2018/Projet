@@ -51,15 +51,20 @@ public class Connexion extends HttpServlet {
          */
         if ( form.getErreurs().isEmpty() ) {
             session.setAttribute( ATT_SESSION_USER, utilisateur );
+            session.setAttribute("utili", utilisateur.getEmail());
             //this.getServletContext().getRequestDispatcher( VUE1 ).forward( request, response );
         } else {
             session.setAttribute( ATT_SESSION_USER, null );
         }
+        
 
         /* Stockage du formulaire et du bean dans l'objet request */
         request.setAttribute( ATT_FORM, form );
         request.setAttribute( ATT_USER, utilisateur );
         
+        if (utilisateur.getEmail()=="admin@admin.com"){
+        		 response.sendRedirect( request.getContextPath() + "/ListeJeux" );
+        }
         
         this.getServletContext().getRequestDispatcher( VUE ).forward( request, response );
     }

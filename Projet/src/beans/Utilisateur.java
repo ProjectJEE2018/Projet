@@ -10,6 +10,7 @@ public class Utilisateur {
     private String nom;
     private String naissance;
     private Timestamp dateInscription;
+    public boolean admin;
     
     public Long getId() {
         return id;
@@ -52,5 +53,15 @@ public class Utilisateur {
     public void setDateInscription( Timestamp dateInscription ) {
         this.dateInscription = dateInscription;
     }
-    
+    /* TEST DE BOOLEEN....
+     * 
+    public boolean isAdmin(){
+    	if (email=="admin@amdmin.com"){
+    		return true;
+    	}else{
+    		return false;
+    	}
+    }
+    */
+    	
 }

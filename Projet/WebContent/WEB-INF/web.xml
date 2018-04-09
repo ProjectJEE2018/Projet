@@ -72,33 +72,33 @@
 	</servlet-mapping>
 
 		<servlet>
-    	<servlet-name>ListeJeux</servlet-name>
+    	<servlet-name>ListeJeuxServlet</servlet-name>
     	<servlet-class>servlets.ListejeuxServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-	    <servlet-name>ListeJeux</servlet-name>
+	    <servlet-name>ListeJeuxServlet</servlet-name>
 	    <url-pattern>/ListeJeux</url-pattern>
 	</servlet-mapping>
 	
 	
 	<servlet>
-    	<servlet-name>ListeJoueurs</servlet-name>
+    	<servlet-name>ListeJoueursServlet</servlet-name>
     	<servlet-class>servlets.ListejoueursServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-	    <servlet-name>ListeJoueurs</servlet-name>
+	    <servlet-name>ListeJoueursServlet</servlet-name>
 	    <url-pattern>/ListeJoueurs</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-    	<servlet-name>Parties</servlet-name>
+    	<servlet-name>PartiesServlet</servlet-name>
     	<servlet-class>servlets.PartieServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-	    <servlet-name>Parties</servlet-name>
+	    <servlet-name>PartiesServlet</servlet-name>
 	    <url-pattern>/Parties</url-pattern>
 	</servlet-mapping>
 	

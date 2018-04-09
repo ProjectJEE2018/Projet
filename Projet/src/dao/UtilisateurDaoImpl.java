@@ -139,7 +139,6 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
     }
     
 
-
     /*
      * Simple méthode utilitaire permettant de faire la correspondance (le
      * mapping) entre une ligne issue de la table des utilisateurs (un

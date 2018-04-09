@@ -16,6 +16,8 @@ import static dao.DAOUtilitaire.initialisationRequetePreparee;
 public class JeuDAOImpl implements JeuDAO{
 
     private DAOFactory          daoFactory;
+    private static final String SQL_INSERT_JEU = "INSERT INTO Jeux (nom) VALUES (?)";
+    
 
     JeuDAOImpl( DAOFactory daoFactory ) {
         this.daoFactory = daoFactory;
@@ -27,6 +29,7 @@ public class JeuDAOImpl implements JeuDAO{
 		Suppr("DELETE FROM Jeu WHERE nom = '"+ nom +"'");
 	}
 
+	  /*CETTE FONCTION NE FAIT RIEN...*/
 	public void Suppr(String sql) throws DAOException {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
@@ -45,24 +48,17 @@ public class JeuDAOImpl implements JeuDAO{
         }
 
     }
-	
-<<<<<<< HEAD
-=======
 
 	
 	
-	
->>>>>>> f03fe7f445482b074eb6ee1b6a1d8fb034f3daee
-	
-    public void creer( Jeu jeu ) throws DAOException {
+	public void creer( Jeu jeu ) throws DAOException {
         Connection connexion = null;
         PreparedStatement preparedStatement = null;
         ResultSet valeursAutoGenerees = null;
-        String sql = "INSERT INTO Jeu VALUES (?)";
 
         try {
             connexion = daoFactory.getConnection();
-            preparedStatement = initialisationRequetePreparee( connexion, sql, false, jeu.getNom());
+            preparedStatement = initialisationRequetePreparee( connexion, SQL_INSERT_JEU, true, jeu.getNom());
             int statut = preparedStatement.executeUpdate();
             if ( statut == 0 ) {
                 throw new DAOException( "Échec de la création du jeu, aucune ligne ajoutée dans la table." );
@@ -71,7 +67,7 @@ public class JeuDAOImpl implements JeuDAO{
             if ( valeursAutoGenerees.next() ) {
                 jeu.setId( valeursAutoGenerees.getLong( 1 ) );
             } else {
-                throw new DAOException( "Échec de la création du jeu  en base, aucun ID auto-généré retourné." );
+                throw new DAOException( "Échec de la création du jeu en base, aucun ID auto-généré retourné." );
             }
         } catch ( SQLException e ) {
             throw new DAOException( e );
@@ -79,10 +75,19 @@ public class JeuDAOImpl implements JeuDAO{
             fermeturesSilencieuses( valeursAutoGenerees, preparedStatement, connexion );
         }
     }
-    
-    
-    
-    
+	
+	  /*
+     * Simple méthode utilitaire permettant de faire la correspondance (le
+     * mapping) entre une ligne issue de la table des utilisateurs (un
+     * ResultSet) et un bean Utilisateur.
+     */
+    private static Jeu map( ResultSet resultSet ) throws SQLException {
+        Jeu jeu = new Jeu();
+        jeu.setId( resultSet.getLong( "id" ) );
+        jeu.setNom( resultSet.getString( "nom" ) );
+        
+        return jeu;
+    }
 
-
+    
 }
