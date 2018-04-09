@@ -3,14 +3,17 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Tests JDBC</title>
+         <link type="text/css" rel="stylesheet" href="style.css" />
+        <title>Utilisateurs : </title>
         <link type="text/css" rel="stylesheet" href="<c:url value="/inc/style.css"/>" />
     </head>
     <body>
-        <h1>Tests JDBC</h1>
+        <h1>Liste des utilisateurs inscrits :</h1>
 
         <c:forEach items="${ messages }" var="message" varStatus="boucle">
-            <p>${ boucle.count }. ${ message }</p>
+        <fieldset>
+            <p> ${ message }</p>
+        </fieldset>
         </c:forEach>
     </body>
 </html>

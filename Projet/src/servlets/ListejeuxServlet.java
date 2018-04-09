@@ -1,12 +1,16 @@
 package servlets;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 
 import beans.Jeu;
 import beans.Utilisateur;
@@ -20,10 +24,12 @@ public class ListejeuxServlet extends HttpServlet {
     public static final String ATT_FORM         = "form";
     public static final String ATT_SESSION_USER = "sessionUtilisateur";
     public static final String ATT_JEU        = "jeu";
+    
     private JeuDAO jeuDao;
 
     public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-        /* Récupération de la session depuis la requête */
+ 
+    	/* Récupération de la session depuis la requête */
         HttpSession session = request.getSession();
 
         /*
@@ -46,7 +52,12 @@ public class ListejeuxServlet extends HttpServlet {
         	
             this.getServletContext().getRequestDispatcher( ACCES_RESTREINT ).forward( request, response );
         }
+        
+        
     }
+    
+
+    
     
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	 /* Préparation de l'objet formulaire */

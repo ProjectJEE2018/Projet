@@ -9,6 +9,10 @@
   <link type="text/css" rel="stylesheet" href="style.css" />
 </head>
 <body>
+	<fieldset>
+		<legend> Liste des jeux disponibles </legend>
+		
+	</fieldset>
 
         <form method="post" action="ListeJeux">
             <fieldset>

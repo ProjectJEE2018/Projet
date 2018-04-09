@@ -72,23 +72,23 @@
 	</servlet-mapping>
 
 		<servlet>
-    	<servlet-name>ListeJeuxServlet</servlet-name>
+    	<servlet-name>ListejeuxServlet</servlet-name>
     	<servlet-class>servlets.ListejeuxServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-	    <servlet-name>ListeJeuxServlet</servlet-name>
+	    <servlet-name>ListejeuxServlet</servlet-name>
 	    <url-pattern>/ListeJeux</url-pattern>
 	</servlet-mapping>
 	
 	
 	<servlet>
-    	<servlet-name>ListeJoueursServlet</servlet-name>
+    	<servlet-name>ListejoueursServlet</servlet-name>
     	<servlet-class>servlets.ListejoueursServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-	    <servlet-name>ListeJoueursServlet</servlet-name>
+	    <servlet-name>ListejoueursServlet</servlet-name>
 	    <url-pattern>/ListeJoueurs</url-pattern>
 	</servlet-mapping>
 	
@@ -102,6 +102,16 @@
 	    <url-pattern>/Parties</url-pattern>
 	</servlet-mapping>
 	
+	
+	<servlet>
+	<servlet-name>GestionTestJDBC</servlet-name>
+	<servlet-class>servlets.GestionTestJDBC</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>GestionTestJDBC</servlet-name>
+	<url-pattern>/testjdbc</url-pattern>
+</servlet-mapping>
 	
 	<listener>
     	<listener-class>config.InitialisationDaoFactory</listener-class>
