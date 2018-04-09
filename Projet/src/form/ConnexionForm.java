@@ -64,6 +64,7 @@ public final class ConnexionForm {
             setErreur(CHAMP_PASS, e.getMessage());
         }
     }
+    
     public Utilisateur connecterUtilisateur( HttpServletRequest request ) {
         /* Récupération des champs du formulaire */
         String email = getValeurChamp( request, CHAMP_EMAIL );
@@ -87,6 +88,7 @@ public final class ConnexionForm {
         }
 	    return utilisateur;
     }
+    
     /*
      * Ajoute un message correspondant au champ spécifié à la map des erreurs.
      */
