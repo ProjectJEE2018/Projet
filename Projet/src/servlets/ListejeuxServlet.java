@@ -28,7 +28,7 @@ public class ListejeuxServlet extends HttpServlet {
          * Si l'objet utilisateur n'existe pas dans la session en cours, alors
          * l'utilisateur n'est pas connecté.
          */
-        if ( session.getAttribute( ATT_SESSION_USER ) == "admin") {
+        if ( session.getAttribute( ATT_SESSION_USER ) == "admin@admin.com") {
             /* Redirection vers la page publique */
             response.sendRedirect( request.getContextPath() + ACCES_LISTE );
         } else {
