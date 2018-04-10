@@ -8,7 +8,7 @@
 </head>
 <body>
 
-        <form method="post" action="InterdireJoueur">
+        <form method="post" action="ListeJoueurs">
             <fieldset>
                 <legend>Bannir un joueur</legend>
                 <p>Quel est le nom du joueur que vous voulez interdire</p>
@@ -23,7 +23,7 @@
         </form>
         
         
-		<form method="post" action="réinstaurerJoueur">
+		<form method="post" action="ListeJoueurs">
             <fieldset>
                 <legend>Réinstaurer un joueur</legend>
                 <p>Veuillez saisir le nom du jueur à réinstaurer</p>

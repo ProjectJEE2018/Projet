@@ -50,9 +50,5 @@ public class Partie implements Serializable {
 	public void setEnCours(boolean enCours) {
 		this.enCours = enCours;
 	}
-    
-    
-	
-	
-
 }
+    

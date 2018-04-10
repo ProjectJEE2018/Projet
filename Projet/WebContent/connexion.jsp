@@ -37,5 +37,18 @@
                 <a href="restriction"> Accès aux jeux !</a>
             </fieldset>
         </form>
+        
+        <fieldset>
+        <legend> ADMIN </legend>
+        <p> Si vous êtes administrateur vos accès sont les suivants :</p>
+        <a href="ListeJeux"> Gérer la liste des jeux </a>
+        <br />
+        
+        <a href="testjdbc"> Gérer la liste des utilisateurs </a>
+        
+        
+        
+        
+        </fieldset>
     </body>
 </html>

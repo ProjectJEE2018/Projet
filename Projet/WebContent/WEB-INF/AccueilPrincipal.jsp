@@ -13,6 +13,8 @@
 
 
  <p>Vous n'avez pas accès à l'espace restreint de jeux : vous devez vous <a href="connexion">connecter</a> d'abord. </p>
+ 
+ <p> Si vous souhaitez vous inscrire afin de profiter de nos jeux en ligne, <a href="inscription"> inscrivez-vous </a>! </p>
 </fieldset>
 </body>
 </html>

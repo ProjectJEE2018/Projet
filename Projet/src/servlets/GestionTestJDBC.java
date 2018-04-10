@@ -27,20 +27,13 @@ public class GestionTestJDBC extends HttpServlet {
     	java.sql.Connection connexion = null;
     	try {
     	    connexion = DriverManager.getConnection( url, utilisateur, motDePasse );
-    	   ;
-    	    /* Ici, nous placerons nos requêtes vers la BDD */
-    	    /* ... */
-
+    	   
     	} catch ( SQLException e ) {
-    	    /* Gérer les éventuelles erreurs ici */
     	} finally {
     	    if ( connexion != null )
     	        try {
-    	            /* Fermeture de la connexion */
     	            connexion.close();
-    	        } catch ( SQLException ignore ) {
-    	            /* Si une erreur survient lors de la fermeture, il suffit de l'ignorer. */
-    	        }
+    	        } catch ( SQLException ignore ) { }
     	}
     	
     	/* Initialisation de l'objet Java et récupération des messages */

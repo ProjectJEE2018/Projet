@@ -72,13 +72,13 @@
 	</servlet-mapping>
 
 		<servlet>
-    	<servlet-name>ListejeuxServlet</servlet-name>
-    	<servlet-class>servlets.ListejeuxServlet</servlet-class>
+    	<servlet-name>GestionJeuJDBC</servlet-name>
+    	<servlet-class>servlets.GestionJeuJDBC</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
-	    <servlet-name>ListejeuxServlet</servlet-name>
-	    <url-pattern>/ListeJeux</url-pattern>
+	    <servlet-name>GestionJeuJDBC</servlet-name>
+	    <url-pattern>/accesRestreint</url-pattern>
 	</servlet-mapping>
 	
 	
@@ -90,6 +90,16 @@
 	<servlet-mapping>
 	    <servlet-name>ListejoueursServlet</servlet-name>
 	    <url-pattern>/ListeJoueurs</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+    	<servlet-name>ListejeuxServlet</servlet-name>
+    	<servlet-class>servlets.ListejeuxServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+	    <servlet-name>ListejeuxServlet</servlet-name>
+	    <url-pattern>/ListeJeux</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

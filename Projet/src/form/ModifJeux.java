@@ -1,6 +1,8 @@
 package form;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +13,9 @@ import dao.JeuDAO;
 import dao.UtilisateurDao;
 
 public class ModifJeux {
+	private List<String> messages = new ArrayList<String>();
 	private static final String CHAMP_JEU_NOM   = "nom";
+	
 	private String resultat;
 	private Map<String, String> erreurs = new HashMap<String, String>();
 	private JeuDAO      jeuDao;
@@ -29,7 +33,7 @@ public class ModifJeux {
 	    }
 	
 	    public Jeu creerJeu( HttpServletRequest request ) {	 
-	    	
+	    	// Récupération du formulaire :
 	        String nom = getValeurChamp( request, CHAMP_JEU_NOM );
 	        
 	        Jeu jeu = new Jeu();

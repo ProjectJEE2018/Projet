@@ -14,7 +14,7 @@ import beans.Partie;
 import static dao.DAOUtilitaire.fermeturesSilencieuses;
 import static dao.DAOUtilitaire.initialisationRequetePreparee;
 
-public class PartieDaoImpl implements PartieDao{
+public class PartieDaoImpl implements PartieDAO{
 	
 	private static final String SQL_INSERT = "INSERT INTO Partie (id, Jeu_id, Utilisateur_id, date_debut, date_fin, enCours) VALUES (?, ?, ?, NOW(), ?, TRUE)";
 	private static final String SQL_SELECT_EN_COURS = "SELECT id, Jeu_id, Utilisateur_id, date_debut FROM Partie WHERE enCours = true";

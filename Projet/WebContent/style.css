@@ -5,10 +5,16 @@ body, p, legend, label, input {
 }
 
 fieldset {
-    padding: 10px;
+    padding: 1Opx;
     border: 1px #0568CD solid;
 }
 
+h1 {
+	padding: 20px;
+	font-weight: bold;
+    color: #0568CD;
+	
+}
 legend {
     font-weight: bold;
     color: #0568CD;
